@@ -16,7 +16,7 @@ const List = ({ array, listId }) => {
   return (
     <div className="list">
       <button onClick={() => moveAll(listId)}>Move All</button>
-      <button onClick={() => addRandom(listId)}>Add random number</button>
+      <button onClick={() => addRandom(listId)}>Add random</button>
       {array.map((item, itemId) => (
         <Item value={item} listId={listId} itemId={itemId} key={itemId} />
       ))}

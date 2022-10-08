@@ -7,9 +7,9 @@ import { Provider } from 'react-redux';
 
 const defaultState = {
   lists: [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
+    ['apple', 'banana', 'orange'],
+    ['red', 'yellow', 'green'],
+    ['first', 'second', 'third'],
   ],
 };
 
@@ -60,7 +60,9 @@ const reducer = (state = defaultState, action) => {
         lists: [],
       };
       newstate.lists = [...state.lists];
-      newstate.lists[action.listId].push(Math.floor(Math.random() * 10));
+      newstate.lists[action.listId].push(
+        `New${Math.floor(Math.random() * 100)}`
+      );
       return newstate;
     }
     default:
