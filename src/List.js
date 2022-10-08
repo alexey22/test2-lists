@@ -1,17 +1,17 @@
-import './List.css'
-import { useDispatch } from 'react-redux'
-import Item from './Item'
+import './List.css';
+import { useDispatch } from 'react-redux';
+import Item from './Item';
 
 const List = ({ array, listId }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const moveAll = (idx) => {
-    dispatch({ type: 'MOVE_ALL_ITEMS', listId: idx })
-  }
+    dispatch({ type: 'MOVE_ALL_ITEMS', listId: idx });
+  };
 
   const addRandom = (idx) => {
-    dispatch({ type: 'ADD_RANDOM', listId: idx })
-  }
+    dispatch({ type: 'ADD_RANDOM', listId: idx });
+  };
 
   return (
     <div className="list">
@@ -21,7 +21,7 @@ const List = ({ array, listId }) => {
         <Item value={item} listId={listId} itemId={itemId} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default List
+export default List;
