@@ -9,7 +9,7 @@ const Item = ({ value, listId, itemId }) => {
   };
 
   return (
-    <div className="item" onClick={() => moveOne()}>
+    <div className="item" key={itemId} onClick={() => moveOne()}>
       {value}
     </div>
   );

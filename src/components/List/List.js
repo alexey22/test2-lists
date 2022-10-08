@@ -1,6 +1,6 @@
 import './List.css';
 import { useDispatch } from 'react-redux';
-import Item from './Item';
+import Item from './Item/Item';
 
 const List = ({ array, listId }) => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const List = ({ array, listId }) => {
       <button onClick={() => moveAll(listId)}>Move All</button>
       <button onClick={() => addRandom(listId)}>Add random number</button>
       {array.map((item, itemId) => (
-        <Item value={item} listId={listId} itemId={itemId} />
+        <Item value={item} listId={listId} itemId={itemId} key={itemId} />
       ))}
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './components/App/App';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
@@ -16,26 +16,34 @@ const defaultState = {
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'MOVE_ONE_ITEM': {
-      let newstate = JSON.parse(JSON.stringify(state));
+      //let newstate = JSON.parse(JSON.stringify(state)); // working slow
+      //let newstate = {...state} // not working
+      let newstate = {
+        lists: [],
+      };
+      newstate.lists = [...state.lists];
 
       const listIdMoveTo = (index) => {
-        if (index == 2) return 0;
+        if (index === 2) return 0;
         else return index + 1;
       };
       newstate.lists[listIdMoveTo(action.listId)].push(
         newstate.lists[action.listId][action.itemId]
       );
       newstate.lists[action.listId] = newstate.lists[action.listId].filter(
-        (item, index) => index != action.itemId
+        (item, index) => index !== action.itemId
       );
 
       return newstate;
     }
     case 'MOVE_ALL_ITEMS': {
-      let newstate = JSON.parse(JSON.stringify(state));
+      let newstate = {
+        lists: [],
+      };
+      newstate.lists = [...state.lists];
 
       const listIdMoveTo = (index) => {
-        if (index == 2) return 0;
+        if (index === 2) return 0;
         else return index + 1;
       };
 
@@ -48,7 +56,10 @@ const reducer = (state = defaultState, action) => {
     }
 
     case 'ADD_RANDOM': {
-      let newstate = JSON.parse(JSON.stringify(state));
+      let newstate = {
+        lists: [],
+      };
+      newstate.lists = [...state.lists];
       newstate.lists[action.listId].push(Math.floor(Math.random() * 10));
       return newstate;
     }

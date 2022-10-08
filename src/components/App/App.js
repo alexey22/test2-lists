@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import './App.css';
-import List from './List';
+import List from '../List/List';
 
 const App = () => {
   const lists = useSelector((state) => state.lists);
